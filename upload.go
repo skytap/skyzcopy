@@ -45,6 +45,8 @@ func uploadSingleFile(fileName string, containerURL azblob.ContainerURL) {
 		BlockSize:   4 * 1024 * 1024,
 		Parallelism: 16})
 	handleErrors(err)
+	defer file.Close()
+
 }
 
 func handleErrors(err error) {
@@ -125,17 +127,30 @@ func main() {
 	}
 	if fileInfo.IsDir() {
 		fileList := make([]string, 0)
-		e := filepath.Walk(fileNameorDirectory, func(path string, f os.FileInfo, err error) error {
+		err := filepath.Walk(fileNameorDirectory, func(path string, f os.FileInfo, err error) error {
 			fileList = append(fileList, path)
 			return err
 		})
 		
-		if e != nil {
-			panic(e)
+		if err != nil {
+			if os.IsNotExist(err) {
+				fmt.Println(err)
+			}
 		}
 	
 		for _, file := range fileList {
-			fileInfo, _ := os.Stat(file)
+			fileInfo, err := os.Stat(file)
+			if err != nil {
+				fmt.Println("Skipping file: %s due to error opening.", file)
+				continue
+			}
+			if fileInfo.Size() == 0 {
+				continue
+			}
+			if os.IsNotExist(err) {
+				fmt.Println("Skipping file: %s as this file does not exist.", file)
+			}
+
 			if fileInfo.IsDir() {
 			} else {
 				uploadSingleFile(file, containerURL)
