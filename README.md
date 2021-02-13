@@ -14,5 +14,5 @@ export AZURE_STORAGE_ACCESS_KEY=“xxxxx”
 
 ### Running the utility:
 
-Please pass a filename as a parameter to the executable like so:
-```./skyzcopy_upload <filename>```
+Please pass a filename or directory as a parameter to the executable. You can also specify an existing container (although this is optional):
+```./skyzcopy_upload <filename_or_directory> [existing_container]```
