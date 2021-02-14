@@ -8,8 +8,8 @@ The AIX implementation of Azure Storage SDK
 Environment variables for the Storage Account and Access Key must be set:
 
 ```
-export AZURE_STORAGE_ACCOUNT=“xxxx"
-export AZURE_STORAGE_ACCESS_KEY=“xxxxx”
+export AZURE_STORAGE_ACCOUNT="xxxx"
+export AZURE_STORAGE_ACCESS_KEY="xxxxx"
 ```
 
 ### Running the utility:
