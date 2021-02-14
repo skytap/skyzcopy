@@ -1,8 +1,8 @@
 # skyzcopy
 
-Pronounced sky-zed-copy
+Pronounced sky-zed-copy as an homage to azcopy
 
-The AIX implementation of Azure Storage SDK
+The AIX (and IBM i) implementation of Azure Storage SDK, this application will let you move files into and out of (*coming soon!*) Azure Storage.
 
 ## Usage
 Environment variables for the Storage Account and Access Key must be set:
