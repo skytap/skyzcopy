@@ -14,5 +14,11 @@ export AZURE_STORAGE_ACCESS_KEY="xxxxx"
 
 ### Running the utility:
 
+By default, AIX does not contain the CA certificates needed to connect to the blob storage. Please install them with the following command:
+
+
+```yum -y install ca-certificates```
+
+
 Please pass a filename or directory as a parameter to the executable. You can also specify an existing container (although this is optional):
 ```./skyzcopy_upload <filename_or_directory> [existing_container]```
